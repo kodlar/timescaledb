@@ -13,4 +13,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PostgreTest.Api\PostgreTest.Api.csproj" />
+  </ItemGroup>
+
 </Project>

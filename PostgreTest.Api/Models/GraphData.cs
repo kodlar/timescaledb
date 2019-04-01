@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PostgreTest.Models
+namespace PostgreTest.Api.Models
 {
-    public class TradeData
+    public class GraphData
     {
         public long Id { get; set; }
 
@@ -18,11 +17,11 @@ namespace PostgreTest.Models
 
         public decimal Volume { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-
+        public Int32 CreatedDate { get; set; }   
+        [NotMapped]
         public string Symbol { get; set; }
+    
+        
 
-     
-     
     }
 }

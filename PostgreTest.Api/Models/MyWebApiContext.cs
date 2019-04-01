@@ -1,46 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Internal;
 
-namespace PostgreTest.Models
+namespace PostgreTest.Api.Models
 {
-    public partial class tutorialContext : DbContext
+    public class MyWebApiContext : DbContext
     {
-        public tutorialContext()
-        {
-        }
-
-        public tutorialContext(DbContextOptions<tutorialContext> options)
-            : base(options)
-        {
-        }
-
-        public virtual DbSet<Chunk> Chunk { get; set; }
-        public virtual DbSet<Dimension> Dimension { get; set; }
-        public virtual DbSet<DimensionSlice> DimensionSlice { get; set; }
-        public virtual DbSet<Hypertable> Hypertable { get; set; }
-        public virtual DbSet<Tablespace> Tablespace { get; set; }    
-        
-        public virtual DbSet<GraphTest> GraphTests { get; set; }
-
-        public virtual DbSet<TradeData> GraphDatas { get; set; }
-
-        // Unable to generate entity type for table 'public.conditions'. Please see the warning messages.
-        // Unable to generate entity type for table '_timescaledb_cache.cache_inval_extension'. Please see the warning messages.
-        // Unable to generate entity type for table '_timescaledb_catalog.chunk_index'. Please see the warning messages.
-        // Unable to generate entity type for table '_timescaledb_internal._hyper_1_1_chunk'. Please see the warning messages.
-        // Unable to generate entity type for table '_timescaledb_catalog.chunk_constraint'. Please see the warning messages.
-        // Unable to generate entity type for table '_timescaledb_cache.cache_inval_hypertable'. Please see the warning messages.
+        public virtual DbSet<GraphData> GraphData { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-             
-                optionsBuilder.UseNpgsql("Host=localhost;Database=tutorial;Username=postgres;Password=1");
-            }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+            optionsBuilder.UseNpgsql("Host=localhost;Database=tutorial;Username=postgres;Password=1");
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresExtension("timescaledb");
@@ -146,23 +121,23 @@ namespace PostgreTest.Models
             });
 
 
-           
 
-            modelBuilder.Entity<GraphTest>(entity =>
+
+            //modelBuilder.Entity<GraphTest>(entity =>
+            //{
+            //    entity.ToTable("test");
+
+            //    entity.Property(e => e.Id)
+            //       .HasColumnName("id");
+
+            //    entity.Property(e => e.Name)
+            //       .HasColumnName("name");
+            //});
+
+
+            modelBuilder.Entity<GraphData>(entity =>
             {
-                entity.ToTable("test");
-
-                entity.Property(e => e.Id)
-                   .HasColumnName("id");
-
-                entity.Property(e => e.Name)
-                   .HasColumnName("name");
-            });
-
-
-            modelBuilder.Entity<TradeData>(entity =>
-            {
-                entity.ToTable("tradedata");
+                entity.ToTable("graphdata");
 
                 entity.Property(e => e.Id)
                    .HasColumnName("id");
@@ -182,17 +157,15 @@ namespace PostgreTest.Models
                 entity.Property(e => e.Volume)
                   .HasColumnName("volume");
 
-          
-                entity.Property(e => e.Symbol)
-                 .HasColumnName("symbol");
+                entity.Property(e => e.CreatedDate)
+                  .HasColumnName("createddate");
 
                 
 
-                entity.Property(e => e.CreatedDate)
-                    .HasColumnName("createddate");
+                
 
             });
-            
+
             modelBuilder.HasSequence("chunk_constraint_name");
 
             modelBuilder.HasSequence<int>("chunk_id_seq");
@@ -206,4 +179,8 @@ namespace PostgreTest.Models
             modelBuilder.HasSequence<int>("tablespace_id_seq");
         }
     }
+
+
+
+
 }

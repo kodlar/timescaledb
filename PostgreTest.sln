@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreTest", "PostgreTest\PostgreTest.csproj", "{990446AF-9B56-4E74-993F-3ED555F96B3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgreTest", "PostgreTest\PostgreTest.csproj", "{990446AF-9B56-4E74-993F-3ED555F96B3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreTest.Api", "PostgreTest.Api\PostgreTest.Api.csproj", "{99FD4772-4178-4195-B2D1-6652B5675D81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{990446AF-9B56-4E74-993F-3ED555F96B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990446AF-9B56-4E74-993F-3ED555F96B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990446AF-9B56-4E74-993F-3ED555F96B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99FD4772-4178-4195-B2D1-6652B5675D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FD4772-4178-4195-B2D1-6652B5675D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FD4772-4178-4195-B2D1-6652B5675D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FD4772-4178-4195-B2D1-6652B5675D81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
